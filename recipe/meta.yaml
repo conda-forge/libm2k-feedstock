@@ -10,7 +10,7 @@ source:
     sha256: 64f62cf9a72d625c4a4344a1984a2f8c5d4a95aeaed0026a0cba7ac0c0ca7390
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage('libm2k', max_pin='x.x') }}
 
