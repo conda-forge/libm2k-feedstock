@@ -6,8 +6,10 @@ package:
   version: {{ version }}
 
 source:
-  - url: https://github.com/analogdevicesinc/{{ name }}/archive/v{{ version }}.tar.gz
-    sha256: b0111ffbcb3fd79cede7295affa92005f89204e07f716d1a20930fdc7d426e33
+  url: https://github.com/analogdevicesinc/{{ name }}/archive/v{{ version }}.tar.gz
+  sha256: b0111ffbcb3fd79cede7295affa92005f89204e07f716d1a20930fdc7d426e33
+  patches:
+    - 0001-Don-t-set-a-specific-architecture-for-OSX.patch
 
 build:
   number: 2
