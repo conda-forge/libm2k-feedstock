@@ -18,6 +18,8 @@ build:
 
 requirements:
   build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - {{ compiler('cxx') }}
     - cmake
     # libudev is on its own in CentOS 6, packaged with systemd in CentOS 7
