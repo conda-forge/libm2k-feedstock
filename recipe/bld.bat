@@ -37,4 +37,4 @@ if errorlevel 1 exit 1
 cd %LIBRARY_PREFIX%\Lib\site-packages
 move libm2k*.egg-info %SP_DIR%
 move libm2k.py %SP_DIR%
-move _libm2k.pyd %SP_DIR%
+move _libm2k*.pyd %SP_DIR%
