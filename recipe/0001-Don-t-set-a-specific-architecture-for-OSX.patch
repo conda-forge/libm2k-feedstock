@@ -3,6 +3,7 @@ From: Ryan Volz <ryan.volz@gmail.com>
 Date: Thu, 13 May 2021 17:10:11 -0400
 Subject: [PATCH] Don't set a specific architecture for OSX.
 
+Signed-off-by: Ryan Volz <ryan.volz@gmail.com>
 ---
  src/CMakeLists.txt | 5 -----
  1 file changed, 5 deletions(-)
@@ -24,5 +25,5 @@ index aedfd29..ae59129 100644
  
  FILE(GLOB_RECURSE SRC_LIST  *.cpp *_impl.hpp */*_impl.hpp)
 -- 
-2.25.1
+2.30.2
 
