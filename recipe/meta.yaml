@@ -13,7 +13,7 @@ source:
     - 0002-Query-Python-EXT_SUFFIX-to-set-the-extension-suffix.patch
 
 build:
-  number: 2
+  number: 3
   run_exports:
     - {{ pin_subpackage('libm2k', max_pin='x.x') }}
 
@@ -21,9 +21,8 @@ requirements:
   build:
     - {{ compiler('cxx') }}
     - cmake
-    # libudev is on its own in CentOS 6, packaged with systemd in CentOS 7
+    # libudev CDT only needed for compiling against libiio on CentOS 6 sysroot
     - {{ cdt('libudev-devel') }}  # [linux and cdt_name=='cos6']
-    - {{ cdt('systemd-devel') }}  # [linux and cdt_name=='cos7']
     - make  # [not win]
     - ninja  # [win]
     - swig
@@ -32,6 +31,7 @@ requirements:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
   host:
     - libiio
+    - libusb-cos6  # [linux and cdt_name=='cos6']
     - python
     - setuptools
   run:

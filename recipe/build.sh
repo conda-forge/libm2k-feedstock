@@ -22,7 +22,6 @@ cmake_config_args=(
 
 if [[ $target_platform == linux* ]] ; then
     cmake_config_args+=(
-        -DCMAKE_CXX_STANDARD_LIBRARIES="-ludev"
         -DINSTALL_UDEV_RULES=ON
         -DUDEV_RULES_PATH=$PREFIX/lib/udev/rules.d
     )
@@ -36,3 +35,13 @@ fi
 cmake ${CMAKE_ARGS} .. "${cmake_config_args[@]}"
 cmake --build . --config Release -- -j${CPU_COUNT}
 cmake --build . --config Release --target install
+
+# manually rename libpyuhd to have the proper extension suffix when cross-compiling
+if [[ $python_impl == "pypy" && $build_platform == linux-64 ]] ; then
+    if [[ $target_platform == linux-ppc64le || $target_platform == linux-aarch64 ]] ; then
+        pushd $SP_DIR
+        LIBM2K_PY_ORIGNAME=`basename _libm2k*.so`
+        LIBM2K_PY_NAME=${LIBM2K_PY_ORIGNAME/x86_64-linux-gnu/linux-gnu}
+        mv $LIBM2K_PY_ORIGNAME $LIBM2K_PY_NAME
+    fi
+fi
