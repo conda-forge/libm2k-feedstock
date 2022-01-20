@@ -22,7 +22,6 @@ cmake_config_args=(
 
 if [[ $target_platform == linux* ]] ; then
     cmake_config_args+=(
-        -DCMAKE_CXX_STANDARD_LIBRARIES="-ludev"
         -DINSTALL_UDEV_RULES=ON
         -DUDEV_RULES_PATH=$PREFIX/lib/udev/rules.d
     )
