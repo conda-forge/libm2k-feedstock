@@ -9,7 +9,7 @@ Signed-off-by: Ryan Volz <ryan.volz@gmail.com>
  1 file changed, 5 deletions(-)
 
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index aedfd29..ae59129 100644
+index 1d55aac..fad0002 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
 @@ -3,11 +3,6 @@ cmake_minimum_required(VERSION 3.1.3)
@@ -25,5 +25,5 @@ index aedfd29..ae59129 100644
  
  FILE(GLOB_RECURSE SRC_LIST  *.cpp *_impl.hpp */*_impl.hpp)
 -- 
-2.30.2
+2.34.1
 
