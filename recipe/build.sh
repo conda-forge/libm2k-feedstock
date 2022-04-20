@@ -32,16 +32,14 @@ else
     )
 fi
 
+if [[ $python_impl == "pypy" ]] ; then
+    # we need to help cmake find pypy
+    cmake_config_args+=(
+        -DPython_LIBRARY=$PREFIX/lib/`$PYTHON -c "import sysconfig; print(sysconfig.get_config_var('LDLIBRARY'))"`
+        -DPython_INCLUDE_DIR=`$PYTHON -c "import sysconfig; print(sysconfig.get_paths()['include'])"`
+    )
+fi
+
 cmake ${CMAKE_ARGS} .. "${cmake_config_args[@]}"
 cmake --build . --config Release -- -j${CPU_COUNT}
 cmake --build . --config Release --target install
-
-# manually rename libpyuhd to have the proper extension suffix when cross-compiling
-if [[ $python_impl == "pypy" && $build_platform == linux-64 ]] ; then
-    if [[ $target_platform == linux-ppc64le || $target_platform == linux-aarch64 ]] ; then
-        pushd $SP_DIR
-        LIBM2K_PY_ORIGNAME=`basename _libm2k*.so`
-        LIBM2K_PY_NAME=${LIBM2K_PY_ORIGNAME/x86_64-linux-gnu/linux-gnu}
-        mv $LIBM2K_PY_ORIGNAME $LIBM2K_PY_NAME
-    fi
-fi
