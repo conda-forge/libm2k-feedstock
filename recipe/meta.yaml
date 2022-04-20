@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/analogdevicesinc/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 4dc146d80a6383cf2d5a32d8970cedd784d5f0ee3470f2cc110be8cc22af972f
+  sha256: 8350c09617cfc041c5cae6f23bc1d0dbe6cdc4beb6009b500434cd866aea00f7
   patches:
     - 0001-Don-t-set-a-specific-architecture-for-OSX.patch
     - 0002-Query-Python-EXT_SUFFIX-to-set-the-extension-suffix.patch
