@@ -32,6 +32,13 @@ else
     )
 fi
 
+if [[ $python_impl == "pypy" ]] ; then
+    # we need to help cmake find pypy
+    cmake_config_args+=(
+        -DPython_LIBRARY=$PREFIX/lib/`$PYTHON -c "import sysconfig; print(sysconfig.get_config_var('LDLIBRARY'))"`
+    )
+fi
+
 cmake ${CMAKE_ARGS} .. "${cmake_config_args[@]}"
 cmake --build . --config Release -- -j${CPU_COUNT}
 cmake --build . --config Release --target install
