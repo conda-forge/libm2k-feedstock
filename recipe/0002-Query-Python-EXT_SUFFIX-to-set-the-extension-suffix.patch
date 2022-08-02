@@ -16,11 +16,11 @@ Signed-off-by: Ryan Volz <ryan.volz@gmail.com>
  2 files changed, 13 insertions(+), 2 deletions(-)
 
 diff --git a/bindings/python/CMakeLists.txt b/bindings/python/CMakeLists.txt
-index 6c00612..9fd2a07 100644
+index a64ffc5..2056068 100644
 --- a/bindings/python/CMakeLists.txt
 +++ b/bindings/python/CMakeLists.txt
-@@ -115,13 +115,24 @@ IF (PYTHON_LINK)
- ENDIF()
+@@ -136,13 +136,24 @@ if(NOT APPLE)
+ endif()
  
  set(PYTHON_EXECUTABLE_LIB_VERSION ${Python_EXECUTABLE})
 +
@@ -46,16 +46,18 @@ index 6c00612..9fd2a07 100644
  #		set_property(TARGET ${SWIG_MODULE_pyBar_REAL_NAME} APPEND PROPERTY
  #			LINK_FLAGS "-flat_namespace -undefined suppress")
 diff --git a/bindings/python/setup.py.cmakein b/bindings/python/setup.py.cmakein
-index 5012aa5..267d2ad 100644
+index 7140a3e..0f50a9e 100644
 --- a/bindings/python/setup.py.cmakein
 +++ b/bindings/python/setup.py.cmakein
-@@ -8,5 +8,5 @@ setup (name = '${PROJECT_NAME}',
-        url='https://github.com/analogdevicesinc/libm2k',
-        py_modules = ["${PROJECT_NAME}"],
-        packages=[''],
--       package_data={'': ['_${PROJECT_NAME}.so', '_${PROJECT_NAME}.pyd']},
-+       package_data={'': ['_${PROJECT_NAME}${PYTHON_EXTENSION_SUFFIX}']},
-        )
+@@ -60,7 +60,7 @@ else:
+         url='https://github.com/analogdevicesinc/libm2k',
+         py_modules = ["${PROJECT_NAME}"],
+         packages=[''],
+-        package_data={'': ['_${PROJECT_NAME}.so', '_${PROJECT_NAME}.pyd']},
++        package_data={'': ['_${PROJECT_NAME}${PYTHON_EXTENSION_SUFFIX}']},
+         python_requires=">=3.6",
+         classifiers=[
+                 "Programming Language :: Python :: 3",
 -- 
-2.30.2
+2.35.1
 
