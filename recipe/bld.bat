@@ -21,7 +21,7 @@ cmake -G "Ninja" ^
     -DPython_EXECUTABLE=%PYTHON% ^
     -DENABLE_DOC=OFF ^
     -DENABLE_LOG=OFF ^
-    -DENABLE_EXCEPTIONS=OFF ^
+    -DENABLE_EXCEPTIONS=ON ^
     ..
 if errorlevel 1 exit 1
 
