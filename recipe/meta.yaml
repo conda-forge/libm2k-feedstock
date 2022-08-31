@@ -14,7 +14,7 @@ source:
     - 0003-CMakeLists.txt-Fix-install-location-for-m2kcli-on-Ma.patch
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage('libm2k', max_pin='x.x') }}
 
