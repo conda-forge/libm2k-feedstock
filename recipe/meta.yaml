@@ -1,5 +1,5 @@
 {% set name = "libm2k" %}
-{% set version = "0.6.0" %}
+{% set version = "0.7.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,14 +7,13 @@ package:
 
 source:
   url: https://github.com/analogdevicesinc/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: fd5e4b4169d2d0f6dbf381dd10effb28ca1c58c85ff77ad9145a04906db53431
+  sha256: d974a3d5107dd051b9cd47f9a03075992f619c0e41e75155341d40fdd6f7d60f
   patches:
     - 0001-Don-t-set-a-specific-architecture-for-OSX.patch
     - 0002-Query-Python-EXT_SUFFIX-to-set-the-extension-suffix.patch
-    - 0003-CMakeLists.txt-Fix-install-location-for-m2kcli-on-Ma.patch
 
 build:
-  number: 1
+  number: 0
   run_exports:
     - {{ pin_subpackage('libm2k', max_pin='x.x') }}
 

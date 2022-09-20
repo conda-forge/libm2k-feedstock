@@ -16,7 +16,7 @@ Signed-off-by: Ryan Volz <ryan.volz@gmail.com>
  2 files changed, 13 insertions(+), 2 deletions(-)
 
 diff --git a/bindings/python/CMakeLists.txt b/bindings/python/CMakeLists.txt
-index a64ffc5..2056068 100644
+index f0d1072..f1f2443 100644
 --- a/bindings/python/CMakeLists.txt
 +++ b/bindings/python/CMakeLists.txt
 @@ -136,13 +136,24 @@ if(NOT APPLE)
