@@ -7,7 +7,7 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '14'
+- '15'
 libiio:
 - '0'
 macos_machine:
@@ -25,3 +25,4 @@ target_platform:
 zip_keys:
 - - python
   - python_impl
+  - channel_sources
