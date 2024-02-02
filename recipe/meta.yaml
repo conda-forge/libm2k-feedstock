@@ -1,5 +1,5 @@
 {% set name = "libm2k" %}
-{% set version = "0.7.0" %}
+{% set version = "0.8.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,13 +7,13 @@ package:
 
 source:
   url: https://github.com/analogdevicesinc/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: e457001964230cfedc15e5c3331f761568ca04dc39c3d5e3edf3ba495a5f471b
+  sha256: c32cbc9a6eefe9e5716f01db33b95f9a067824bf0c3c595ad0f3366d3624ed77
   patches:
     - 0001-Don-t-set-a-specific-architecture-for-OSX.patch
     - 0002-Query-Python-EXT_SUFFIX-to-set-the-extension-suffix.patch
 
 build:
-  number: 2
+  number: 0
   run_exports:
     - {{ pin_subpackage('libm2k', max_pin='x.x') }}
 
