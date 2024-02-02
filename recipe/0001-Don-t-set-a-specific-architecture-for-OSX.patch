@@ -25,5 +25,5 @@ index 8bb16de..cf0f04c 100644
  	if (NOT ENABLE_EXCEPTIONS)
  		# support for C/C++ conformant preprocessor in MSVC was added starting with
 -- 
-2.35.1
+2.42.0
 
