@@ -13,13 +13,14 @@ source:
     - 0002-Query-Python-EXT_SUFFIX-to-set-the-extension-suffix.patch
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage('libm2k', max_pin='x.x') }}
 
 requirements:
   build:
     - {{ compiler('cxx') }}
+    - {{ stdlib("c") }}
     - cmake
     # libudev CDT only needed for compiling against libiio on CentOS 6 sysroot
     - {{ cdt('libudev-devel') }}  # [linux and cdt_name=='cos6']
