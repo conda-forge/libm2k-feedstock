@@ -22,8 +22,6 @@ requirements:
     - {{ compiler('cxx') }}
     - {{ stdlib("c") }}
     - cmake
-    # libudev CDT only needed for compiling against libiio on CentOS 6 sysroot
-    - {{ cdt('libudev-devel') }}  # [linux and cdt_name=='cos6']
     - make  # [not win]
     - ninja  # [win]
     - swig
@@ -32,7 +30,6 @@ requirements:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
   host:
     - libiio
-    - libusb-cos6  # [linux and cdt_name=='cos6']
     - python
     - setuptools
   run:
