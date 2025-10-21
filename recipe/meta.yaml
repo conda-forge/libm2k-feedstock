@@ -13,7 +13,7 @@ source:
     - 0002-Query-Python-EXT_SUFFIX-to-set-the-extension-suffix.patch
 
 build:
-  number: 1
+  number: 2
   run_exports:
     - {{ pin_subpackage('libm2k', max_pin='x.x') }}
 
@@ -21,7 +21,7 @@ requirements:
   build:
     - {{ compiler('cxx') }}
     - {{ stdlib("c") }}
-    - cmake
+    - cmake <4
     - make  # [not win]
     - ninja  # [win]
     - swig
