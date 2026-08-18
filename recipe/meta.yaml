@@ -10,6 +10,7 @@ source:
   sha256: f9a78a8573cc2781d7787e89eebbf9e4efd88e978afdb7be78dbe6b4a00d10a6
   patches:
     - 0001-Query-Python-EXT_SUFFIX-to-set-the-extension-suffix.patch
+    - 0002-cmake-Don-t-set-CMAKE_INSTALL_RPATH.patch
 
 build:
   number: 0
