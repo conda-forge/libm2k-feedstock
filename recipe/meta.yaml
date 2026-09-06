@@ -13,7 +13,7 @@ source:
     - 0002-cmake-Don-t-set-CMAKE_INSTALL_RPATH.patch
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage('libm2k', max_pin='x.x') }}
 
