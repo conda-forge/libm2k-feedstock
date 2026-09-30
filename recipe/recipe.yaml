@@ -1,0 +1,85 @@
+schema_version: 1
+
+context:
+  version: "0.9.1"
+
+package:
+  name: libm2k
+  version: ${{ version }}
+
+source:
+  url: https://github.com/analogdevicesinc/libm2k/archive/refs/tags/v${{ version }}.tar.gz
+  sha256: f9a78a8573cc2781d7787e89eebbf9e4efd88e978afdb7be78dbe6b4a00d10a6
+  patches:
+    - 0001-Query-Python-EXT_SUFFIX-to-set-the-extension-suffix.patch
+    - 0002-cmake-Don-t-set-CMAKE_INSTALL_RPATH.patch
+
+build:
+  number: 1
+
+requirements:
+  build:
+    - ${{ compiler("cxx") }}
+    - ${{ stdlib("c") }}
+    - cmake <4
+    - ninja
+    - swig
+    # cross-compilation requirements
+    - if: build_platform != target_platform
+      then:
+        - python
+        - cross-python_${{ target_platform }}
+  host:
+    - libiio
+    # Since Python 3.15, library is split into libpython output needed by CMake
+    - libpython
+    - python
+    - setuptools
+  run:
+    # libiio run dep included by its run_exports
+    - python
+  run_exports:
+    - ${{ pin_subpackage("libm2k", upper_bound="x.x") }}
+  ignore_run_exports:
+    from_package:
+      # CMake needs to find libpython, but it is not linked to
+      - libpython
+
+tests:
+  - package_contents:
+      strict: true
+      bin:
+        - m2kcli
+      include:
+        - libm2k/m2k.hpp
+        - libm2k/**
+      lib:
+        - m2k
+      files:
+        - ${{ "Lib/" if (win and match(python, "<3.15")) else "lib/python*" }}site-packages/*libm2k*
+        - ${{ "Library/" if win }}lib/cmake/libm2k/*.cmake
+        - ${{ "Library/" if win }}lib/pkgconfig/libm2k.pc
+  - python:
+      imports:
+        - libm2k
+      pip_check: false
+  - script:
+      - m2kcli --help
+
+about:
+  license: LGPL-2.1-or-later
+  license_file: LICENSE
+  summary: Library for interfacing with the ADALM2000
+  description: |
+    C++ library and python bindings for interfacing with
+    the ADALM2000 portable lab. This library simplifies
+    ADALM2000's functionality into a series of easy to
+    use components.
+  homepage: https://github.com/analogdevicesinc/libm2k
+  repository: https://github.com/analogdevicesinc/libm2k
+  documentation: https://analogdevicesinc.github.io/libm2k/
+
+extra:
+  recipe-maintainers:
+    - ryanvolz
+    - tfcollins
