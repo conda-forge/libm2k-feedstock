@@ -42,8 +42,9 @@ requirements:
     - ${{ pin_subpackage("libm2k", upper_bound="x.x") }}
   ignore_run_exports:
     from_package:
-      # CMake needs to find libpython, but it is not linked to
-      - libpython
+      # CMake needs to find libpython, but it is not linked to except on linux
+      - if: not linux
+        then: libpython
 
 tests:
   - package_contents:
