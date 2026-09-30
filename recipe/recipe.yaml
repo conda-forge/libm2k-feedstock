@@ -54,11 +54,18 @@ tests:
         - libm2k/m2k.hpp
         - libm2k/**
       lib:
-        - m2k
+        - if: unix
+          then: m2k
       files:
         - ${{ "Lib/" if (win and match(python, "<3.15")) else "lib/python*" }}site-packages/*libm2k*
         - ${{ "Library/" if win }}lib/cmake/libm2k/*.cmake
         - ${{ "Library/" if win }}lib/pkgconfig/libm2k.pc
+        - if: linux
+          then: lib/udev/rules.d/53-adi-m2k-usb.rules
+        - if: win
+          then:
+            - Library/bin/libm2k.dll
+            - Library/lib/libm2k.lib
   - python:
       imports:
         - libm2k
